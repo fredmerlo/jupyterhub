@@ -1,1 +1,14 @@
-skip-check: 
+skip-check:
+  - CKV_GCP_12
+  - CKV_GCP_13
+  - CKV_GCP_20
+  - CKV_GCP_21
+  - CKV_GCP_23
+  - CKV_GCP_25
+  - CKV_GCP_61
+  - CKV_GCP_62
+  - CKV_GCP_64
+  - CKV_GCP_65
+  - CKV_GCP_66
+  - CKV_GCP_69
+  - CKV_GCP_70

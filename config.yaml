@@ -13,6 +13,7 @@ singleuser:
   image:
     name: us-central1-docker.pkg.dev/ai-resume-450913/jupyter-hub-images/crewai-base-notebook
     tag: 2025-02-19
+    startTimeout: 420
   extraAnnotations:
     gke-gcsfuse/volumes: "true"
   serviceAccountName: hub
