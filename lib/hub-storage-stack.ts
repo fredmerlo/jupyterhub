@@ -16,6 +16,9 @@ export class HubStorage extends Construct {
       publicAccessPrevention: "enforced",
       uniformBucketLevelAccess: true,
       forceDestroy: true,
+      versioning: {
+        enabled: true,
+      },
     });
   }
 }
