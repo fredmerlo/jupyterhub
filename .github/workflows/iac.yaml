@@ -1,0 +1,54 @@
+name: Checkov IaC Scan
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+    paths-ignore:
+      - '.github/workflows/**'
+      - '*.md'
+      - '.gitignore'
+  push:
+    branches:
+      - fix**
+      - feat**
+    paths-ignore:
+      - '.github/workflows/**'
+      - '*.md'
+      - '.gitignore'
+
+  workflow_dispatch:
+
+jobs:
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+      security-events: write
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Checkov
+        run: |
+          pip3 install checkov
+    
+      - name: Run Checkov
+        id: checkov
+        run: |
+          checkov -d ./cdktf.out/stacks/ai-resume  -o cli -o sarif \
+          --output-file-path console,results.sarif --config-file .github/checkov.yaml \
+          --enable-secret-scan-all-files
+        
+      - name: Upload SARIF file
+        id: sarif
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: results.sarif
