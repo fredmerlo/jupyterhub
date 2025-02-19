@@ -24,7 +24,6 @@
             "uniqueId": "gke-cluster_jupiter-hub-cluster_5F116E9A"
           }
         },
-        "allow_net_admin": true,
         "deletion_protection": false,
         "enable_autopilot": true,
         "location": "us-central1",
