@@ -14,7 +14,7 @@ export class HubContainer extends Construct {
       location,
       name: "ai-resume-jupyter-hub",
       enableAutopilot: true,
-      allowNetAdmin: true,
+      // allowNetAdmin: true,
       deletionProtection: false,
     });
   }
