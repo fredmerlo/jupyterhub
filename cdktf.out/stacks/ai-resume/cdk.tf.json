@@ -1,0 +1,111 @@
+{
+  "//": {
+    "metadata": {
+      "backend": "gcs",
+      "stackName": "ai-resume",
+      "version": "0.20.11"
+    },
+    "outputs": {
+    }
+  },
+  "provider": {
+    "google": [
+      {
+        "region": "us-central1"
+      }
+    ]
+  },
+  "resource": {
+    "google_container_cluster": {
+      "gke-cluster_jupiter-hub-cluster_5F116E9A": {
+        "//": {
+          "metadata": {
+            "path": "ai-resume/gke-cluster/jupiter-hub-cluster",
+            "uniqueId": "gke-cluster_jupiter-hub-cluster_5F116E9A"
+          }
+        },
+        "allow_net_admin": true,
+        "deletion_protection": false,
+        "enable_autopilot": true,
+        "location": "us-central1",
+        "name": "ai-resume-jupyter-hub",
+        "project": "ai-resume-450913"
+      }
+    },
+    "google_project_iam_binding": {
+      "gcs-workload_jupyter-hub-sa-binding_C4CC285C": {
+        "//": {
+          "metadata": {
+            "path": "ai-resume/gcs-workload/jupyter-hub-sa-binding",
+            "uniqueId": "gcs-workload_jupyter-hub-sa-binding_C4CC285C"
+          }
+        },
+        "members": [
+          "serviceAccount:${google_service_account.gcs-workload_jupyter-hub-sa_CAC144BA.email}"
+        ],
+        "project": "ai-resume-450913",
+        "role": "roles/storage.objectAdmin"
+      }
+    },
+    "google_service_account": {
+      "gcs-workload_jupyter-hub-sa_CAC144BA": {
+        "//": {
+          "metadata": {
+            "path": "ai-resume/gcs-workload/jupyter-hub-sa",
+            "uniqueId": "gcs-workload_jupyter-hub-sa_CAC144BA"
+          }
+        },
+        "account_id": "juptyerhub",
+        "description": "Jupyter Hub Service Account",
+        "display_name": "juptyerhub",
+        "project": "ai-resume-450913"
+      }
+    },
+    "google_service_account_iam_binding": {
+      "gcs-workload_jupyter-hub-sa-workload-identity-binding_DB261139": {
+        "//": {
+          "metadata": {
+            "path": "ai-resume/gcs-workload/jupyter-hub-sa-workload-identity-binding",
+            "uniqueId": "gcs-workload_jupyter-hub-sa-workload-identity-binding_DB261139"
+          }
+        },
+        "members": [
+          "principal://iam.googleapis.com/projects/734216777151/locations/global/workloadIdentityPools/ai-resume-450913.svc.id.goog/subject/ns/jupyterhub/sa/hub"
+        ],
+        "role": "roles/iam.workloadIdentityUser",
+        "service_account_id": "projects/ai-resume-450913/serviceAccounts/${google_service_account.gcs-workload_jupyter-hub-sa_CAC144BA.email}"
+      }
+    },
+    "google_storage_bucket": {
+      "gcs-storage_jupyter-hub-bucket_5C21B45E": {
+        "//": {
+          "metadata": {
+            "path": "ai-resume/gcs-storage/jupyter-hub-bucket",
+            "uniqueId": "gcs-storage_jupyter-hub-bucket_5C21B45E"
+          }
+        },
+        "force_destroy": true,
+        "location": "us-central1",
+        "name": "ai-resume-jupyter-hub-shared",
+        "project": "ai-resume-450913",
+        "public_access_prevention": "enforced",
+        "storage_class": "STANDARD",
+        "uniform_bucket_level_access": true
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "gcs": {
+        "bucket": "ai-resume-terraform-state",
+        "prefix": "terraform.state"
+      }
+    },
+    "required_providers": {
+      "google": {
+        "source": "google",
+        "version": "6.20.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+hub:
+  config:
+    JupyterHub:
+      admin_access: true
+      admin_users:
+        - fred
+      authenticator_class: dummy
+  serviceAccount:
+    annotations:
+      iam.gke.io/gcp-service-account:
+        juptyerhub@ai-resume-450913.iam.gserviceaccount.com
+singleuser:
+  image:
+    name: us-central1-docker.pkg.dev/ai-resume-450913/jupyter-hub-images/crewai-base-notebook
+    tag: 2025-02-19
+  extraAnnotations:
+    gke-gcsfuse/volumes: "true"
+  serviceAccountName: hub
+  cloudMetadata:
+    blockWithIptables: false
+  networkPolicy:
+    egressAllowRules:
+      cloudMetadataServer: true
+  storage:
+    capacity: 128Mi
+    extraVolumes:
+      - name: shareddata
+        csi:
+          driver: gcsfuse.csi.storage.gke.io
+          readOnly: false
+          volumeAttributes:
+            bucketName: ai-resume-jupyter-hub-shared
+            mountOptions: "implicit-dirs,uid=1000,gid=100"
+    extraVolumeMounts:
+      - name: shareddata
+        mountPath: /home/jovyan/shared
+scheduling:
+  userScheduler:
+    enabled: false
