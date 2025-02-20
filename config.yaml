@@ -1,9 +1,10 @@
 hub:
   config:
-    JupyterHub:
-      admin_access: true
+    Authenticator:
       admin_users:
         - fred
+      allow_all: true
+    JupyterHub:
       authenticator_class: dummy
   serviceAccount:
     annotations:
