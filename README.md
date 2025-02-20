@@ -4,7 +4,9 @@
 ![AI-Resume](https://raw.githubusercontent.com/fredmerlo/jupyterhub/main/ai-resume.gif)
 
 #### Highlights
-- GKE Cluster provisioned via Terrafor CDKTF
+- AI-Resume analyzes a job listing and generates a custom resume with emphasis on skill matche to job requirements
+- AND also generates a list of possible interview questions based on the job listing
+- GKE Cluster provisioned via Terraform CDKTF
 - Jupyter Hub deployed on the cluster with Helm charts
 - Custom Docker image with all the ai tools preinstalled, keeps things spiffy in Jupyter Hub
 - Cloud Storage Bucket for storing the Jupyter Notebook and ai generated resume and interview questions
