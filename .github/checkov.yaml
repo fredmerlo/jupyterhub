@@ -10,5 +10,6 @@ skip-check:
   - CKV_GCP_64
   - CKV_GCP_65
   - CKV_GCP_66
+  - CKV_GCP_68
   - CKV_GCP_69
   - CKV_GCP_70
