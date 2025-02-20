@@ -4,7 +4,7 @@
 ![AI-Resume](https://raw.githubusercontent.com/fredmerlo/jupyterhub/main/ai-resume.gif)
 
 #### Highlights
-- AI-Resume analyzes a job listing and generates a custom resume with emphasis on skill matche to job requirements
+- AI-Resume analyzes a job listing and generates a custom resume with emphasis on experience match to job requirements
 - AND also generates a list of possible interview questions based on the job listing
 - GKE Cluster provisioned via Terraform CDKTF
 - Jupyter Hub deployed on the cluster with Helm charts
