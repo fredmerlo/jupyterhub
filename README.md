@@ -8,6 +8,6 @@
 - AND also generates a list of possible interview questions based on the job listing
 - GKE Cluster provisioned via Terraform CDKTF
 - Jupyter Hub deployed on the cluster with Helm charts
-- Custom Docker image with all the ai tools preinstalled, keeps things spiffy in Jupyter Hub
+- Custom image built with Docker, hosted on GCS Appregisty that includes all the ai tools preinstalled, keeps things spiffy in Jupyter Hub
 - Cloud Storage Bucket for storing the Jupyter Notebook and ai generated resume and interview questions
 - I will be addding more deetz shortly
