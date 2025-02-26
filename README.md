@@ -9,5 +9,5 @@
 - GKE Cluster provisioned via Terraform CDKTF
 - Jupyter Hub deployed on the cluster with Helm charts
 - Custom image built with Docker, hosted on GCS Appregisty that includes all the ai tools preinstalled, keeps things spiffy in Jupyter Hub
-- Cloud Storage Bucket for storing the Jupyter Notebook and ai generated resume and interview questions
+- Cloud Storage Bucket mounted on the pod as a volume, for storing the Jupyter Notebook and ai generated resume and interview questions
 - I will be addding more deetz shortly
